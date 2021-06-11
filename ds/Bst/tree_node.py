@@ -10,6 +10,8 @@ class TreeNode:
 
     def add_child(self, child_node):
         print("adding " + child_node.value)
+        if child_node in self.children:
+            print('Duplicate value')
         self.children.append(child_node)
 
     def remove_child(self, child_node):
@@ -21,7 +23,7 @@ class TreeNode:
     def traverse(self):
         print("Traversing")
         nodes_to_visit = [self]
-        while len(nodes_to_visit) != 0:
+        while len(nodes_to_visit) > 0:
             current_node = nodes_to_visit.pop()
             print(current_node.value)
             nodes_to_visit += current_node.children
