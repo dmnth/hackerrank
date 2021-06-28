@@ -22,7 +22,7 @@ def equalize_stack(s1, s2, s3):
 			s2_h -= s2.pop()
 
 		elif s3_h > s1_h and s3_h > s2_h:
-			s3_h -= s3.pop()
+			s3_h -= s3.pop()`
 	
 	print(s1, '\n', s2, '\n', s3)
 	return s3_h

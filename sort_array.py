@@ -1,16 +1,10 @@
-somearray = [0, 12, 3, 5, 9, 2, 4]
+matrix = [[0, 1, 2],
+          [3, 4, 5],
+          [6, 7, 8]]
 
-def sort_array(somearray):
-
-    index = 0
-    current_element = somearray[index]
-
-    for i in range(len(somearray)):
-        for j in range(i+1, len(somearray)):
-            if somearray[i] > somearray[j]:
-                element = somearray[i]
-                somearray[i] = somearray[j]
-                somearray[j] = element
-
-    return somearray
-print(sort_array(somearray))
+def diagonal_sums(matrix):
+    left_sum = 0
+    right_sum = 0
+    for element in matrix:
+        for i in range(len(element)-2):
+            print(element[i], element[i+1], element[i+2])

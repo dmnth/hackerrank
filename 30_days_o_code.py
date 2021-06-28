@@ -1,9 +1,8 @@
-#! /usr/bin/env python3
-
 # Enter your code here. Read input from STDIN. Print output to STDOUT
 
-returned = '31122009'
-due = '112010'
+returned = input().split(' ')
+due = input().split(' ')
+
 
 def fine(returned, due):
     
@@ -17,21 +16,21 @@ def fine(returned, due):
     day_due = int(due[0])
     month_due =int(due[1])
     year_due = int(due[2])
-
+    
     if year_returned > year_due:
-    	current_fine += 10000
-    	print('year is due')
-    	return
-
-    if month_returned > month_due:
-    	current_fine += 500 * (month_returned - month_due)
-    	print('year is due')
-    	return
-
+        current_fine += 10000
+        return current_fine
+    
+    if month_returned > month_due and year_returned >= year_due:
+        current_fine += (month_returned - month_due) * 500
+        return current_fine
+    
     if day_returned > day_due and year_returned >= year_due:
-    	current_fine += 15 * (day_returned - day_due)
-    	print('day is due')
-    	print(day_returned, day_due)
-    	return
+        current_fine += (day_returned - day_due) * 15
+        return current_fine
+    
+    else:
+        return current_fine
 
 print(fine(returned, due))
+    

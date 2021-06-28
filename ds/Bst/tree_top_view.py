@@ -29,7 +29,9 @@ def top_view(root_node):
 
 		else:
 			break
+
 	print(hash_map)
+	
 if __name__ == "__main__":
 	
 	my_tree = BinarySearchTree()

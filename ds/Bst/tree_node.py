@@ -12,6 +12,7 @@ class TreeNode:
         print("adding " + child_node.value)
         if child_node in self.children:
             print('Duplicate value')
+            return
         self.children.append(child_node)
 
     def remove_child(self, child_node):

@@ -1,21 +1,22 @@
 # Apples and oranges
 
 def do_some_calculations(s, t, a, b, apples, oranges):
-	print(s, t, a, b, apples, oranges)
 	answer_oranges = 0
 	answer_apples = 0
 
+	house_zone = [x for x in range(s, t+1)]
+
 	for idx in range(len(apples)):
-		if a+apples[idx] in range(s, t+1):
+		if a + apples[idx] in house_zone:
 			answer_apples += 1
 
 	for idx in range(len(oranges)):
-		print(oranges[idx] + b)
-		if b + oranges[idx] in range(s, t+1):
+		if b + oranges[idx] in house_zone:
 			answer_oranges += 1
 	
 	print(answer_oranges)
 	print(answer_apples)
+
 if __name__ == "__main__": 
 	
 	left_pointer = 7
