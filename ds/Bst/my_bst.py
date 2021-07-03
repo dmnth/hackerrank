@@ -51,10 +51,28 @@ class binaryTree:
             else:
                 break
     
+
     def traverseTree(self):
 
-        return
-    
+        current = self.root
+        stack = []
+
+        while True:
+
+            if current is not None:
+                stack.append(current)
+                current = current.left
+
+            elif stack:
+                current = stack.pop()
+                print(current.value)
+                current = current.right 
+
+            else:
+                break
+
+                
+        
 if __name__ == "__main__":
     
     node_1 = Node(1)
