@@ -10,27 +10,34 @@ from binary_tree_class import BinarySearchTree, Node
 
 def top_view(root_node):
 	
-	stack = []
-	current_node = root_node
 	hash_map = {}
 	level = 0
+	kiu = [(root_node, level)]
 
 	# Iterative in-order traversal:
 	# Way to count nodes on each level
 
-	while True:
+	while len(kiu):
 
-		if current_node is not None:
-			stack.append(current_node)
-			current_node = current_node.left
+		node = kiu[0][0]
+		value = kiu[0][0].info
+		depth = kiu[0][1]
 
-		elif stack:
-			current_node = stack.pop()
-			print(current_node.info, end=" ")
-			current_node = current_node.right
+		if depth not in hash_map.keys():
+			hash_map[depth] = value 
 
-		else:
-			break
+		if node.left:
+			kiu.append((node.left, depth-1))
+
+		if node.right:
+			kiu.append((node.right, depth+1))
+
+		kiu.pop(0)
+
+	print(hash_map)
+
+
+
 
 
 	
@@ -43,7 +50,8 @@ if __name__ == "__main__":
 	#test_array = test_string.split()
 	#test_array = [37, 23, 108, 59, 55, 86, 64, 94, 65, 14, 105, 17, 111, 115]
 	#test_array = [99, 60, 155, 41, 73, 81, 85, 86, 87, 80, 79, 78, 77, 40]
-	test_array = [1, 2, 5, 3, 6, 4]
+	#test_array = [1, 2, 5, 3, 6, 4]
+	test_array = [39, 28, 51, 13, 7, 26, 37, 30, 38, 46, 60]
 	for element in test_array:
 		my_tree.create(element)
 

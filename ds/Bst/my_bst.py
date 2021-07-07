@@ -20,7 +20,7 @@ class Node:
 
 class binaryTree:
 
-    def __init__(self, node):
+    def __init__(self, node=None):
 
         self.root = node 
 
@@ -34,19 +34,23 @@ class binaryTree:
 
         while True:
 
-            if child.value < current.get_value():
-                if current.left is None:
+            if current.get_value() < child.get_value():
+
+                if current.left:
+                    current = current.left
+               
+                else:
                     current.left = child
                     break
-                else:
-                    current = current.left
 
-            if child.value > current.get_value():
-                if current.right is None:
+            if current.get_value() > child.get_value():
+
+                if current.right:
+                    current = current.right
+
+                else:
                     current.right = child
                     break
-                else:
-                    current = current.right
 
             else:
                 break
@@ -72,7 +76,7 @@ class binaryTree:
 
             elif stack:
                 current = stack.pop()
-                print(f"{current.value} at level {level}")
+                print(current.get_value())
                 current = current.right 
 
             else:
@@ -86,15 +90,14 @@ class binaryTree:
 
         while kiu:
 
-            x_distance, element = kiu.pop(0)
+            x_distance, element = kiu.pop()
 
             if element.left:
 
                 if x_distance-1 not in hash_mape.keys():
                     hash_mape[x_distance - 1] = [element.left.value]
                 else:
-                    pass
-                    #hash_mape[x_distance - 1].append(element.left.value)
+                    hash_mape[x_distance - 1].append(element.left.value)
 
                 kiu.append((x_distance-1, element.left))
 
@@ -103,10 +106,11 @@ class binaryTree:
                 if x_distance+1 not in hash_mape.keys():
                     hash_mape[x_distance + 1] = [element.right.value]
                 else:
-                    pass
-                    #hash_mape[x_distance + 1].append(element.right.value)
+                    hash_mape[x_distance + 1].append(element.right.value)
 
                 kiu.append((x_distance+1, element.right))
+
+
 
         print(hash_mape)
 
@@ -120,12 +124,17 @@ if __name__ == "__main__":
     node_4 = Node(6)
     node_5 = Node(4)
 
-    print(node_1.value)
     tree = binaryTree(node_1)
     tree.add_child(node_2)
     tree.add_child(node_3)
     tree.add_child(node_4)
     tree.add_child(node_5)
 
-    tree.traverseTree()
-    tree.vertical_order_traversal()
+    new_tree = binaryTree()
+    sample = [39, 28, 51, 13, 37, 46, 60, 7, 26, 30, 38]
+
+    for element in sample:
+        new_tree.add_child(Node(element))
+
+    
+    new_tree.vertical_order_traversal()
