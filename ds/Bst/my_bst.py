@@ -69,7 +69,6 @@ class binaryTree:
 
         """
         while True:
-
             if current is not None:
                 stack.append(current)
                 current = current.left
@@ -110,9 +109,31 @@ class binaryTree:
 
                 kiu.append((x_distance+1, element.right))
 
+        return hash_mape
 
+    def topView(self):
+        # Initialize the level
+        this_level = [(self.root, 0)]
+        scores = {}
 
-        print(hash_mape)
+        while this_level:
+            # Iterate over the nodes on a single level
+            node, score = this_level.pop(0)
+            # Skip empty nodes
+            if not node:
+                continue 
+
+            # Store score if it is a new one
+            if score not in scores:
+                scores[score] = node.value
+
+            # Add node children to the next level
+            this_level.extend([(node.left, score-1), (node.right, score+1)])
+
+        # Sort the scores and print their values
+
+        for _, value in sorted(list(scores.items())):
+            print(value, end = ' ')
 
 
         
@@ -137,4 +158,5 @@ if __name__ == "__main__":
         new_tree.add_child(Node(element))
 
     
-    new_tree.vertical_order_traversal()
+#    new_tree.vertical_order_traversal()
+    new_tree.topView()
