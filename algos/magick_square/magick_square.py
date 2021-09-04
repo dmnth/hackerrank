@@ -23,8 +23,66 @@ class magickSquare:
 		row = self.matrix[idx]
 		cost = 0
 		diff = 15 - sum(row)
+		# Check diagonals
+
+		if row[1] != 5:
+			row[1] = 5
+
+		if sum(self.diag_one) != 15:
+			if row[0] % 2 == 1:
+				print(f"{row[0]} in {row} needs to be replaced")
+				old_value = row[0]
+				new_value = row[0] + diff
+				row[0] = new_value
+				cost += abs(new_value - old_value)
+				print(new_value, cost)
+
+			if row[1] % 2 == 0:
+				print(f"{row[1]} in {row} needs to be replaced")
+				old_value = row[0]
+				new_value = row[0] + diff
+				row[0] = new_value
+				cost += abs(new_value - old_value)
+				print(new_value, cost)
+
+			if row[2] % 2 == 1:
+				print(f"{row[2]} in {row} needs to be replaced")
+				old_value = row[0]
+				new_value = row[0] + diff
+				row[0] = new_value
+				cost += abs(new_value - old_value)
+				print(new_value, cost)
+
+		if sum(self.diag_two) != 15:
+			if row[0] % 2 == 1:
+				print(f"{row[0]} in {row} needs to be replaced")
+				old_value = row[0]
+				new_value = row[0] + diff
+				row[0] = new_value
+				cost += abs(new_value - old_value)
+				print(new_value, cost)
+
+			if row[1] % 2 == 0:
+				print(f"{row[1]} in {row} needs to be replaced")
+				old_value = row[0]
+				new_value = row[0] + diff
+				row[0] = new_value
+				cost += abs(new_value - old_value)
+				print(new_value, cost)
+
+			if row[2] % 2 == 1:
+				print(f"{row[2]} in {row} needs to be replaced")
+				old_value = row[0]
+				new_value = row[0] + diff
+				row[0] = new_value
+				cost += abs(new_value - old_value)
+				print(new_value, cost)
+			
+
+
 		# Checks middle row of matrix
 		if idx == 1:
+
 			
 			for idx in range(len(row)):
 				if row[idx] % 2 == 0:
@@ -63,13 +121,6 @@ class magickSquare:
 				cost += abs(new_value - old_value)
 				print(new_value, cost)
 
-			if row[0] == row[2] :
-				print(f"dublicates in {row}")
-				old_value = row[0]
-				new_value = row[0] + diff
-				row[0] = new_value
-				cost += abs(new_value - old_value)
-				print(new_value, cost)
 
 		return cost
 		
@@ -107,6 +158,7 @@ class magickSquare:
 
 	def nice_try(self):
 		# Check center -> check diags -> check rows
+		return
 
 
 
