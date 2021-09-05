@@ -15,20 +15,23 @@
 """
 
 def pickingNumbers(test_array):
-		sorted(test_array)
+		
 		hash_map = {}
+		checked = []
 		for el in test_array:
-			hash_map[el] = []
+			if el in hash_map.keys():
+				continue
+			else:
+				hash_map[el] = []
 			for i in range(len(test_array)):
-				if abs(el - test_array[i]) <= 1:
-					hash_map[el].append(test_array[i])
+				if abs(el - test_array[i]) <= 1 and test_array[i] >= el:
+						print(test_array[i])
+						hash_map[el].append(test_array[i])
+		
 
 		max_len = 0
 		max_len_key = 0
-		for key, element in hash_map.items():
-			if key in [50, 51, 52, 53, 54, 55]:
-				print("!!!!!")
-				print(key, element)
+		
 		for key, value in hash_map.items():
 			if check_hash_map(value) is False:
 				pass
@@ -38,7 +41,9 @@ def pickingNumbers(test_array):
 					max_len = len(value)
 					max_len_key = key
 
-		return len(hash_map[max_len_key])
+		return hash_map
+
+
 
 def check_hash_map(hash_map_element):
 		for element in hash_map_element:
@@ -59,6 +64,6 @@ if __name__ == "__main__":
 
 	
 
-	result = pickingNumbers(test_array_4)
+	result = pickingNumbers(test_array_2)
 	
 	print(result)
