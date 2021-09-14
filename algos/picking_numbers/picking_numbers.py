@@ -17,12 +17,13 @@
 def pickingNumbers(test_array):
 		
 		hash_map = {}
-		checked = []
 		for el in test_array:
+
 			if el in hash_map.keys():
 				continue
 			else:
 				hash_map[el] = []
+
 			for i in range(len(test_array)):
 				if abs(el - test_array[i]) <= 1 and test_array[i] >= el:
 						print(test_array[i])
