@@ -22,6 +22,7 @@ if __name__ == "__main__":
 
 	arr = [2, 1, 3, 1, 2]
 	sorted_arr = insertionSort(arr)
-	print(sorted_arr)
+	mid = len(arr) // 2
+	print(mid)
 
 	
